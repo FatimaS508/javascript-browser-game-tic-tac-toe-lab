@@ -65,16 +65,33 @@ function updateBoard(){
 }
 function handleClick(event){
 console.log("square clicked")
-choice=event.target.id 
-console.log(choice)
-const squareIndex= choice //step6 .c
+ const squareIndex = event.target.id;
+
+    if(board[squareIndex] === 'O' || board[squareIndex] === 'X'){
+        return;
+    }
+
+    if(winner === true){
+        return;
+    }
+    placePiece(squareIndex);
 }
 
-//step 6. d
-if(board==='O' || board==='X'){
-    return 
-}else if(winner===true ){
-    return
+
+
+
+//step 6.1
+function placePiece(index){
+board[index]=turn
+console.log(board)
+}
+function checkForWinner(){
+    winningCombos.forEach(function(item){
+        const [i,j,k]= item
+        const val1 =board[i]
+        const val2= board[j]
+        const val3= board[k]
+    })
 }
 
 function init(){
